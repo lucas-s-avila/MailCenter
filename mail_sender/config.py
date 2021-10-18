@@ -1,7 +1,6 @@
-CELERY_BROKER_URL = "redis://localhost:6379/0"
-CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+import os
 
-MAILGUN_KEY = "92e7c2787616d03405c114cc8d6d3bd6-2ac825a1-e2e83614"
-MAILGUN_DOMAIN = "sandboxb5b0fb05fd42437fb7109072c939616d.mailgun.org"
+CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://redis:6379/0') 
+CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL', 'redis://redis:6379/0') 
 
-DJANGO_URL = "http://localhost:8000/"
+DJANGO_URL = os.environ.get('DJANGO_URL', 'http://localhost:8000/mailcenter/')
